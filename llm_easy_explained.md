@@ -63,6 +63,8 @@ _footer: 'Photo by [Susan Jane Golding](https://flic.kr/p/28T85Ae)'
 
 Cons. : Large and sparse vector space. Relationships between words are not embedded.     
 
+---
+## Under the hood of LLM - Transfomer 
 ### BoW (Bug of Words)    
 "I like dogs and cats." / "Cats like dogs."  
 - schema --> [and, cats, dogs, I, like, .]
