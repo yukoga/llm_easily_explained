@@ -75,14 +75,13 @@ Cons. : Depends on frequency. Still large and sparse,  relationships between wor
 ---
 ## Under the hood of LLM - Transfomer 
 
-### tf-idf
+### tf-idf  
 Term Frequency – Inverse Document Frequency  
 
-"I like dogs and cats."  
-- schema --> [and, cats, dogs, I, like, .]
-- and = [1, 0, 0, 0, 0, 0] / cats = [0, 1, 0, 0, 0, 0] / I = [0, 0, 0, 1, 0, 0]
-
-Cons. : Large and sparse vector space.   
+$$
+tf-idf(t, d, D) = tf(t, d) \times idf()
+$$
+[ref](https://monkeylearn.com/blog/what-is-tf-idf/#:~:text=TF%2DIDF%20(term%20frequency%2D,across%20a%20set%20of%20documents.)
 
 ### BoW (Bug of Words)    
 "I like dogs and cats." / "Cats like dogs."  
