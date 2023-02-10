@@ -1,0 +1,274 @@
+---
+marp: true
+theme: default
+# header: "**ヘッダータイトル1** __ヘッダータイトル2__"
+# footer: "yukoga@" 
+backgroundImage: url('https://marp.app/assets/hero-background.svg')
+
+size: 16:9
+paginate: true
+
+style: |
+    @import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap');
+    section.title {
+        font-family: 'Noto Sans JP', sans-serif;
+        justify-content: center;
+        text-align: left;
+    }
+
+    section {
+        font-family: 'Noto Sans JP', sans-serif;
+        justify-content: start;
+    }
+
+    section > bold {
+        font-weight: bold;
+    }
+
+---
+<!-- 
+_class: title 
+_paginate: false
+-->
+# Large language models easily explained
+&nbsp; &nbsp; yukoga@
+
+<!--
+_color: white
+_footer: 'Licensed by [Pixabay](https://pixabay.com/es/illustrations/inteligencia-artificial-cerebro-3382507/)'
+-->
+![bg opacity:.9 brightness:0.4](Artificial-Intelligence.jpg)
+
+---
+## Contents 
+
+- ### GPT-3 playground
+- ### What are large language models?
+- ### How GPT-3 works
+- ### LLM and businesses
+
+
+---
+<!--
+style: |
+    table {
+        font-size: 18pt;
+    }
+    thead th {
+        background-color: #DDDDDD;
+        border-color: #CCCCCC;
+    }
+    tbody tr td:first-child {
+        background-color: #EEEEEE;
+        border-color: #CCCCCC;
+    }
+    tbody tr td:nth-child(n+2) {
+        background-color: #FFFFFF;
+        border-color: #CCCCCC;
+    }
+    tbody tr:last-child {
+        background-color: rgba(0, 0, 0, 0.0);
+        border-style: solid;
+        border-width: 0;
+    }
+-->
+## GPT3 playground 
+
+[GPT3 playground in spreadsheet - https://tinyurl.com/llmeasy](https://tinyurl.com/llmeasy)
+
+---
+## What are large language models?
+
+### Machine Learning tasks related to language (a.k.a. Natural Language Processing)  
+- Classification / Sentiment analysis  
+- Extraction / OCR    
+- Similarity matching  
+- Machine translation  
+- Generate text - Summarization, Question answering ... etc.   
+
+---
+## What are large language models?
+Language model = Machine Learning model for NLP  
+- ### Machine Translation 
+  - RMT (Rule based MT) --> SMT (Statistical MT) --> NMT (Neural MT) --> Deep NMT  
+- ### Sentiment Analysis  
+  - Rule based --> Logistic regression / Naive Bayes --> SVM --> RNN / LSTM (Deep N)
+
+... etc.  
+
+- For those NLP tasks, we need to transform natural language to collection of numeric values --> vector representation / language vector --> **Language models**.  
+
+---
+<!--
+style: |
+    img[alt~="center"] {
+        display: block;
+        margin: 0 auto;
+    }
+
+_footer: 'Source: [What Is a Language Model? - deepset.ai](https://www.deepset.ai/blog/what-is-a-language-model)'
+-->
+## What are large language models?
+
+Language model + Fine-tuning  
+
+![opacity:.9 width:800 center](bert001.png)
+
+
+---
+## What are large language models?
+
+What is the mechanism of language model after all?  
+$$
+P_{LM}(w_1, w_2, w_3, w_4, \cdots) 
+$$
+- For given $P_{LM}$, text generation task would be:  
+$$
+\begin{aligned}
+& P(cats|I, like) \propto P_{LM}(I, like, cats) \\
+& P(and|I, like, cats) \propto P_{LM}(I, like, cats, and, dogs) \\
+& P(dogs|I, like, cats, and) \propto P_{LM}(I, like, cats, and, dogs) \\
+& P(dogs|I, like, cats, and) > P(cats|I, like, cats, and) 
+\end{aligned}
+$$
+- For given $P_{LM}$, MT task would be:  
+
+$$
+
+\begin{aligned}
+
+& P(犬|I, like, cats, and, dogs, 私, 好き, 猫, と) \\
+& \propto P_{LM}(I, like, cats, and, dogs, 私, 好き, 猫, と, 犬)
+
+\end{aligned}
+
+$$
+
+
+---
+<!--
+style: |
+    img[alt~="center"] {
+        display: block;
+        margin: 0 auto;
+    }
+
+_footer: 'Source: [Deciphering the Neural Language Model](https://burakhimmetoglu.com/2016/12/16/deciphering-the-neural-language-model/)'
+-->
+## What are large language models?
+
+What the neural language model looks like?    
+
+![opacity:.9 h:480 center](https://burakhimmetoglu.files.wordpress.com/2016/12/langnet.png)
+
+
+---
+
+<!--
+_footer: 'Source: [Turing-NLG: A 17-billion-parameter language model by Microsoft - Microsoft research blog](https://www.microsoft.com/en-us/research/blog/turing-nlg-a-17-billion-parameter-language-model-by-microsoft/)'
+-->
+## What are large language models?
+LLM size and history  
+
+![opacity:.9 width:800 center](https://www.microsoft.com/en-us/research/uploads/prod/2020/02/TurningNGL_Model__1400x788.png)
+
+
+---
+<!--
+style: |
+    img[alt~="center"] {
+        display: block;
+        margin: 0 auto;
+    }
+
+_footer: 'Source: [How GPT3 Works - Visualizations and Animations - Jay Alammar](https://jalammar.github.io/how-gpt3-works-visualizations-animations/)'
+-->
+## How GTP-3 works?
+GTP-3 (= Generative Pre-trained Transfomer 3)
+![opacity:.9 w:500](https://jalammar.github.io/images/gpt3/01-gpt3-language-model-overview.gif)![opacity:.9 w:500](https://jalammar.github.io/images/gpt3/02-gpt3-training-language-model.gif)
+
+---
+<!--
+style: |
+    img[alt~="center"] {
+        display: block;
+        margin: 0 auto;
+    }
+
+_footer: 'Source: [How GPT3 Works - Visualizations and Animations - Jay Alammar](https://jalammar.github.io/how-gpt3-works-visualizations-animations/)'
+-->
+## How GTP-3 works?
+GTP-3 (= Generative Pre-trained Transfomer 3)
+![opacity:.9 w:800 center](https://jalammar.github.io/images/gpt3/gpt3-training-examples-sliding-window.png)
+
+---
+<!--
+style: |
+    img[alt~="center"] {
+        display: block;
+        margin: 0 auto;
+    }
+
+_footer: 'Source: [How GPT3 Works - Visualizations and Animations - Jay Alammar](https://jalammar.github.io/how-gpt3-works-visualizations-animations/)'
+-->
+## How GTP-3 works?
+GTP-3 (= Generative Pre-trained Transfomer 3)
+![opacity:.9 w:500](https://jalammar.github.io/images/gpt3/gpt3-parameters-weights.png)![opacity:.9 w:500](https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif)
+
+---
+## Geometric-beta model (cont'd)
+We can combine the geometric distribution (given at $eq. (1)$) and the beta distribution ($eq. (5)$) to get the joint distribution as follows: 
+$$
+
+P(T=t|\alpha_{u_i},\hspace{2pt} \beta_{u_i}) = 
+    \int_{0}^{1} p(T=t|\theta_{u_i}) f(\theta_{u_i}|\alpha_{u_i}, \hspace{2pt} \beta_{u_i}) d\theta_{u_i} \hspace{10pt}...\hspace{10pt}(7) \\[8pt]
+p(T=1|\alpha_{u_i}, \hspace{2pt} \beta_{u_i}) = 
+    {\small\frac{B(\alpha_{u_i}+1, \beta_{u_i})}{B(\alpha_{u_i}, \beta_{u_i})} =
+    \frac{\alpha_{u_i}}{\alpha_{u_i} + \beta_{u_i}}} \hspace{10pt}...\hspace{10pt}(8) \\[8pt]
+p(T=t|\alpha_{u_i},\hspace{2pt} \beta_{u_i}) = {\small\frac{\beta_{u_i}+t-2}{\alpha_{u_i}+\beta_{u_i}+t-1}p(T=t-1|\alpha_{u_i},\hspace{2pt} \beta_{u_i})\hspace{5pt} (for\hspace{2pt} t>1)}\hspace{10pt}...\hspace{10pt}(9) \\[8pt]
+r(t) = {\small\frac{\beta_{u_i}+t-1}{\alpha_{u_i}+\beta_{u_i}+t-1}} \hspace{10pt}...\hspace{10pt}(10)
+$$ 
+
+---
+## Geometric-beta model (cont'd)
+Log-Likelihood for $P(T=t|\alpha_{u_i}, \hspace{2pt}\beta_{u_i})$ can be defined as follows:
+
+$$
+L(\alpha_{u_i}, \hspace{2pt}\beta_{u_i}) = {\displaystyle \prod_t P(T=t|\alpha_{u_i}, \hspace{2pt}\beta_{u_i})} \hspace{10pt}...\hspace{10pt}(11)\\[5pt]
+\log L = {\displaystyle \sum_{i}}L(\alpha_{u_i},\hspace{2pt} \beta_{u_i}) = {\displaystyle \sum_{i}\sum_{t}}P(T=t|\alpha_{u_i},\hspace{2pt} \beta_{u_i}) \hspace{10pt}...\hspace{10pt}(12)
+$$ 
+We need to maximize the log-likelihood (12) (or minimize negative log-likelihood) to find optimal parameters $\alpha_{u_i}$ and $\beta_{u_i}$ (i.e. set of parameters $\{w_{u_i}\}$) (MLE = Maximum Likelihood Estimation).
+
+---
+## Calculate CLTV 
+Now we can calculate CLTV with parameters $\alpha_{u_i}$ and $\beta_{u_i}$.
+Survival rate at each time point is as follows:  
+
+- $r_{u_i}(t) = (\beta_{u_i} + t - 1) / (\alpha_{u_i} + \beta_{u_i} + t -1)$
+- $s_{u_i}(t) = 1 \hspace{5pt} when \hspace{5pt} t = 0$
+- $s_{u_i}(t) = r_{u_i}(t)s_{u_i}(t-1) \hspace{5pt} when \hspace{5pt} t > 0$
+
+Then, CLTV for the specific customer $u_i$ is given as follows ($k$ : large enough, integer):
+$$
+\begin{aligned}
+E_{u_i}[CLTV] &= \displaystyle{\sum_{t=0}^{k}} \hspace{2pt}\frac{m}{(1+d)^t}s_{u_i}(t)
+\hspace{10pt}...\hspace{10pt}(13)
+\end{aligned}
+$$
+---
+<!--
+_paginate: false
+-->
+<style scoped>
+h2 {
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 200%;
+}
+</style>
+## Thanks. 
+
+
+<!--
+_footer: 'Photo by [Tobi Gaulke](https://www.flickr.com/photos/gato-gato-gato/45025977691)'
+-->
+![bg opacity:.9 brightness:0.8](45025977691_0103ce74f0_k.jpg)
