@@ -61,21 +61,21 @@ _footer: 'Photo by [Susan Jane Golding](https://flic.kr/p/28T85Ae)'
 - schema --> [and, cats, dogs, I, like, .]
 - and = [1, 0, 0, 0, 0, 0] / cats = [0, 1, 0, 0, 0, 0] / I = [0, 0, 0, 1, 0, 0]
 
-Cons. : Large and sparse vector space.   
+Cons. : Large and sparse vector space. Relationships between words are not embedded.     
 
 ### BoW (Bug of Words)    
 "I like dogs and cats." / "Cats like dogs."  
 - schema --> [and, cats, dogs, I, like, .]
 - and = [1, 0, 0, 0, 0, 0] / cats = [0, 2, 0, 0, 0, 0] / dogs = [0, 0, 2, 0, 0, 0]
 
-Cons. : Large and sparse vector space. Depends on frequency.  
+Cons. : Depends on frequency. Still large and sparse,  relationships between words are not embedded.    
 
 ---
 ## Under the hood of LLM - Transfomer 
 
 ### tf-idf
 Term Frequency – Inverse Document Frequency  
-    
+
 "I like dogs and cats."  
 - schema --> [and, cats, dogs, I, like, .]
 - and = [1, 0, 0, 0, 0, 0] / cats = [0, 1, 0, 0, 0, 0] / I = [0, 0, 0, 1, 0, 0]
