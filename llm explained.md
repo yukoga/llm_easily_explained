@@ -25,6 +25,10 @@ style: |
         font-weight: bold;
     }
 
+    section > table {
+        margin: auto;
+    }
+
 ---
 <!-- 
 _class: title 
@@ -43,7 +47,7 @@ _footer: 'Licensed by [Pixabay](https://pixabay.com/es/illustrations/inteligenci
 ## Contents 
 
 - ### GPT-3 playground
-- ### What are large language models?
+- ### What are language models?
 - ### How GPT-3 works
 - ### LLM and businesses
 
@@ -53,6 +57,7 @@ _footer: 'Licensed by [Pixabay](https://pixabay.com/es/illustrations/inteligenci
 style: |
     table {
         font-size: 18pt;
+        margin: auto;
     }
     thead th {
         background-color: #DDDDDD;
@@ -77,7 +82,7 @@ style: |
 [GPT3 playground in spreadsheet - https://tinyurl.com/llmeasy](https://tinyurl.com/llmeasy)
 
 ---
-## What are large language models?
+## What are language models?
 
 ### Machine Learning tasks related to language (a.k.a. Natural Language Processing)  
 - Classification / Sentiment analysis  
@@ -87,7 +92,7 @@ style: |
 - Generate text - Summarization, Question answering ... etc.   
 
 ---
-## What are large language models?
+## What are language models?
 Language model = Machine Learning model for NLP  
 - ### Machine Translation 
   - RMT (Rule based MT) --> SMT (Statistical MT) --> NMT (Neural MT) --> Deep NMT  
@@ -100,6 +105,235 @@ Language model = Machine Learning model for NLP
 
 ---
 <!--
+_footer: 'Source: [Bag-of-words model - Wikipedia](https://en.wikipedia.org/wiki/Bag-of-words_model)'
+-->
+## What are language models?
+Language representation before Language model  
+- ### One-hot encoding 
+    - I like cats. --> Define words as a vector with elements:  
+    - I = [0, 1, 0, 0] / like = [0, 0, 1, 0] / cats = [1, 0, 0, 0] / . = [0, 0, 0, 1]  
+
+- ### Bag of Words (BoW)  
+  - BoW = {"word1": freq. of word1, "word2": freq. of word2, ...}  
+  - Sentence 1: John likes to watch movies. Mary likes movies too.
+    Sentence 2: Mary also likes to watch football games.  
+    BoW1 = {"John":1,"likes":2,"to":1,"watch":1,"movies":2,"Mary":1,"too":1};  
+    BoW2 = {"Mary":1,"also":1,"likes":1,"to":1,"watch":1,"football":1,"games":1};    
+
+---
+<!--
+style: |
+    img[alt~="center"] {
+        margin: 0 auto;
+    }
+-->
+## What are language models?
+- ### Sentiment Analysis with BoW 
+  [![ center](https://mermaid.ink/img/pako:eNpdkMFKxDAQhl9lyLlbXY9BF9zdi7JFcMGDWw-z7bQNppmSpC6l9N1NGxfFnIbv_zIM_ygKLklIUWm-FA1aD4fX3EB4j6cn0_UeLmxLd3-2cLN55sZIWCeg1Sc5CXcJeF5AmqZRydAOC0Ht-K8bpY-4e7XawHbcaXROVYps_HvgWjmvCrBUWwoRmxhscSAHxT_9-JZNv-t2p5fez_dqPJOOxi08gKEavfoiiAjYXqd1SDt2ak5_7hKJaMm2qMpQyTizXPiGWsqFDGNJFfba5yI3U1Cx93wcTCGktz0lou9K9LRXWFtshaxCBYFSqTzbLNa8tJ2IDs0789WZvgE3L3u4?type=png)](https://mermaid.live/edit#pako:eNpdkMFKxDAQhl9lyLlbXY9BF9zdi7JFcMGDWw-z7bQNppmSpC6l9N1NGxfFnIbv_zIM_ygKLklIUWm-FA1aD4fX3EB4j6cn0_UeLmxLd3-2cLN55sZIWCeg1Sc5CXcJeF5AmqZRydAOC0Ht-K8bpY-4e7XawHbcaXROVYps_HvgWjmvCrBUWwoRmxhscSAHxT_9-JZNv-t2p5fez_dqPJOOxi08gKEavfoiiAjYXqd1SDt2ak5_7hKJaMm2qMpQyTizXPiGWsqFDGNJFfba5yI3U1Cx93wcTCGktz0lou9K9LRXWFtshaxCBYFSqTzbLNa8tJ2IDs0789WZvgE3L3u4)
+
+
+---
+<!--
+-->
+## What are language models?
+Language representation before Language model  
+- ### Word2Vec (Skip-Gram) (2013) 
+  Train neural network to predict context words from a target word.  
+  Distributional Hypothesis: *"Words that occur in the same contexts tend to have similar meanings."*  
+    - Sentence: I like cats.  
+    - Skip-Gram window=1  
+    (target: I, context: like)  
+    (target: like, context: I) and (target: like, context: cats)   
+
+---
+<!--
+style: |
+    img[alt~="center"] {
+        margin: 0 auto;
+    }
+_footer: 'Source: [CS224n: Natural Language Processing with Deep Learning (Stanford 2019)](https://web.stanford.edu/class/archive/cs/cs224n/cs224n.1194/)'
+-->
+## What are language models?
+Neural network to train Word2Vec (Skip-Gram model).  
+![ h:400 center](images/w2v-skipgram-architecture.png)
+
+---
+<!--
+
+_footer: 'Source: [Distributed Representations of Words and Phrases and their Compositionality](https://proceedings.neurips.cc/paper/2013/hash/9aa42b31882ec039965f3c4923ce901b-Abstract.html) <br />
+[Exploiting Similarities among Languages for Machine Translation](https://arxiv.org/abs/1309.4168)'  
+
+-->
+## What are language models?
+Vector representation of Word2Vec. / [demo](http://projector.tensorflow.org/)  
+  
+
+![ h:400](images/w2v-country-and-capital.png)|![ h:400](https://wiki.pathmind.com/images/wiki/word2vec_translation.png)   
+---|---
+
+---
+<!--
+-->
+## What are language models?
+### How word2vec understands word?  
+$$
+Berlin \hspace{2pt} - Germany  \hspace{2pt} + \hspace{2pt} Japan = \hspace{2pt} Tokyo
+$$
+The capital of Germany is Belrin.  
+The capital of Japan is Tokyo.  
+I enjoyed New York in USA.  
+
+--> The capital of USA is _______.
+### Next challenge for language models  
+Language model need to keep long-term memory.  
+"The song were composed by Beatles." vs "This language is composed by commands."
+
+---
+<!--
+style: |
+    img[alt~="center"] {
+        margin: 0 auto;
+    }
+_footer: 'Source: [Visualizing A Neural Machine Translation Model (Mechanics of Seq2seq Models With Attention)](https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/)'
+-->
+## What are language models?
+### Sequence to Sequence Learning with Neural Networks (2014)
+Language model which keeps long-term memory.  
+"I am a student.<s>Je suis étudiant.</s>"  
+
+![ center](https://github.com/tensorflow/nmt/raw/master/nmt/g3doc/img/encdec.jpg)
+
+---
+<!--
+_footer: 'Source: [Visualizing A Neural Machine Translation Model (Mechanics of Seq2seq Models With Attention)](https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/) <br />[Investigation of back-off based interpolation between recurrent neural network and n-gram language models, IEEE](https://ieeexplore.ieee.org/document/7404792)'
+-->
+## What are language models?
+### Sequence to Sequence Learning with Neural Networks (2014)  
+Under the hood of Encoder-Decoder model.  
+
+
+![h:320](https://github.com/tensorflow/nmt/raw/master/nmt/g3doc/img/seq2seq.jpg)|![h:320](https://www.researchgate.net/profile/Xunying-Liu/publication/286924302/figure/fig1/AS:614045275148310@1523411210574/RNNLM-with-an-full-output-layer-and-OOS-nodes.png)  
+---|---  
+
+
+---
+<!--
+style: |
+    img[alt~="center"] {
+        margin: 0 auto;
+    }
+_footer: 'Source: [Effective Approaches to Attention-based Neural Machine Translation](https://arxiv.org/abs/1508.04025)'
+-->
+## What are language models?
+### How attention works  
+
+![ h:400 center](images/attention-based-nmt.png)
+
+---
+<!--
+_footer: "Source: [Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation](https://arxiv.org/abs/1508.04025) <br />[Zero-Shot Translation with Google’s Multilingual Neural Machine Translation System](https://ai.googleblog.com/2016/11/zero-shot-translation-with-googles.html)"
+-->
+## What are language models?
+### GNMT (Google Neural Machine Translation, 2016)
+Zero-Shot machine translation with multilingual NMT.  
+
+![h:320 center](images/gnmt.png)|![](https://1.bp.blogspot.com/-jwgtcgkgG2o/WDSBrwu9jeI/AAAAAAAABbM/2Eobq-N9_nYeAdeH-sB_NZGbhyoSWgReACLcB/s640/image01.gif)  
+---|---
+
+---
+<!--
+_footer: "Source: [Attention is All you Need](https://papers.nips.cc/paper/2017/hash/3f5ee243547dee91fbd053c1c4a845aa-Abstract.html) / [The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/)"
+-->
+## What are language models?
+### Transfomer (2017)
+Attention Is All You Need.  
+
+![h:320 center](https://slds-lmu.github.io/seminar_nlp_ss20/figures/02-02-attention-and-self-attention-for-nlp/transformer-full-model.png)|![h:320](https://jalammar.github.io/images/t/The_transformer_encoder_decoder_stack.png)  
+---|---
+
+---
+<!--
+_footer: "Source: [Attention is All you Need](https://papers.nips.cc/paper/2017/hash/3f5ee243547dee91fbd053c1c4a845aa-Abstract.html) <br />[Attention and Self-Attention for NLP
+ - Modern Approaches in Natural Language Processing](https://slds-lmu.github.io/seminar_nlp_ss20/attention-and-self-attention-for-nlp.html)"
+
+-->
+## What are language models?
+### Transfomer (2017)
+Attention Is All You Need.  
+
+![h:320 center](https://slds-lmu.github.io/seminar_nlp_ss20/figures/02-02-attention-and-self-attention-for-nlp/transformer-full-model.png)|![h:320](https://slds-lmu.github.io/seminar_nlp_ss20/figures/02-02-attention-and-self-attention-for-nlp/multi-head-attention.png)|![h:320](https://slds-lmu.github.io/seminar_nlp_ss20/figures/02-02-attention-and-self-attention-for-nlp/scaled-dot-prod-attention.png)  
+---|---|---
+
+---
+<!--
+_footer: "Source: [Attention is All you Need](https://papers.nips.cc/paper/2017/hash/3f5ee243547dee91fbd053c1c4a845aa-Abstract.html) <br />[Attention and Self-Attention for NLP
+ - Modern Approaches in Natural Language Processing](https://slds-lmu.github.io/seminar_nlp_ss20/attention-and-self-attention-for-nlp.html)"
+
+-->
+## What are language models?
+### Transfomer (2017)
+Attention Is All You Need.  
+
+$$
+\begin{align}
+
+Attention(Q, K, V) &= softmax(QK^T / \sqrt d_k) * V \\
+Q_i &= (W_q * x_i) + PE(i) \\
+K_i &= (W_k * [x_{i-k}, \cdots x_{i+k}] ) + PE(i) \\
+V_i &= W_v x_i \\
+PE_{(pos,2i)} &= \sin(pos/10000^{2i/d_{model}}) \\
+PE_{(pos,2i+1)} &= \cos(pos/10000^{2i/d_{model}})
+
+\end{align}
+$$
+
+---
+<!--
+_footer: "Source: [Attention is All you Need](https://papers.nips.cc/paper/2017/hash/3f5ee243547dee91fbd053c1c4a845aa-Abstract.html) <br />[Attention and Self-Attention for NLP
+ - Modern Approaches in Natural Language Processing](https://slds-lmu.github.io/seminar_nlp_ss20/attention-and-self-attention-for-nlp.html)"
+
+-->
+## What are language models?
+### Transfomer (2017)
+Attention Is All You Need.  
+
+![h:320](images/input-to-mh-attention.png)|![h:320](https://slds-lmu.github.io/seminar_nlp_ss20/figures/02-02-attention-and-self-attention-for-nlp/self-attention-matrix-calculation.png)|$Q_i = (W_q * x_i) + PE(i)$ <br /> $K_i = (W_k * [x_{i-k}, \cdots x_{i+k}] ) + PE(i)$ <br />$V_i = W_v x_i$
+---|---|---
+
+
+
+---
+<!--
+_footer: "Source: [Attention is All you Need](https://papers.nips.cc/paper/2017/hash/3f5ee243547dee91fbd053c1c4a845aa-Abstract.html) <br />[Attention and Self-Attention for NLP
+ - Modern Approaches in Natural Language Processing](https://slds-lmu.github.io/seminar_nlp_ss20/attention-and-self-attention-for-nlp.html)"
+
+-->
+## What are language models?
+### Transfomer (2017)
+Attention Is All You Need.  
+
+![h:320 center](https://slds-lmu.github.io/seminar_nlp_ss20/figures/02-02-attention-and-self-attention-for-nlp/scaled-dot-prod-attention.png)|$\text{Attention}(Q,K,V) = \text{softmax}(\frac{QK^\top}{\sqrt{d_k}})V$
+---|---
+
+---
+<!--
+style: |
+    img[alt~="center"] {
+        margin: 0 auto;
+    }
+_footer: "Source: [Attention is All you Need](https://papers.nips.cc/paper/2017/hash/3f5ee243547dee91fbd053c1c4a845aa-Abstract.html) <br />[Attention and Self-Attention for NLP
+ - Modern Approaches in Natural Language Processing](https://slds-lmu.github.io/seminar_nlp_ss20/attention-and-self-attention-for-nlp.html)"
+
+-->
+## What are language models?
+### Transfomer (2017)
+Attention Is All You Need.  
+
+![h:400 center](images/attention-explained.png)
+
+---
+
+<!--
 style: |
     img[alt~="center"] {
         display: block;
@@ -108,7 +342,7 @@ style: |
 
 _footer: 'Source: [What Is a Language Model? - deepset.ai](https://www.deepset.ai/blog/what-is-a-language-model)'
 -->
-## What are large language models?
+## What are language models?
 
 Language model + Fine-tuning  
 
@@ -116,7 +350,7 @@ Language model + Fine-tuning
 
 
 ---
-## What are large language models?
+## What are language models?
 
 What is the mechanism of language model after all?  
 $$
@@ -155,7 +389,7 @@ style: |
 
 _footer: 'Source: [Deciphering the Neural Language Model](https://burakhimmetoglu.com/2016/12/16/deciphering-the-neural-language-model/)'
 -->
-## What are large language models?
+## What are language models?
 
 What the neural language model looks like?    
 
@@ -165,12 +399,12 @@ What the neural language model looks like?
 ---
 
 <!--
-_footer: 'Source: [Turing-NLG: A 17-billion-parameter language model by Microsoft - Microsoft research blog](https://www.microsoft.com/en-us/research/blog/turing-nlg-a-17-billion-parameter-language-model-by-microsoft/)'
+_footer: "Source: [Large Language Models: A New Moore's Law? - Hugging Face blog](https://huggingface.co/blog/large-language-models)"
 -->
-## What are large language models?
+## What are language models?
 LLM size and history  
 
-![opacity:.9 width:800 center](https://www.microsoft.com/en-us/research/uploads/prod/2020/02/TurningNGL_Model__1400x788.png)
+![opacity:.9 h:480 center](https://huggingface.co/blog/assets/33_large_language_models/01_model_size.jpg)
 
 
 ---
