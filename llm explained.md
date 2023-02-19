@@ -49,7 +49,7 @@ _footer: 'Licensed by [Pixabay](https://pixabay.com/es/illustrations/inteligenci
 - ### GPT-3 playground
 - ### What are language models?
 - ### How GPT-3 works
-- ### LLM and businesses
+- ### LLM for businesses
 
 
 ---
@@ -346,9 +346,10 @@ _footer: 'Source: [What Is a Language Model? - deepset.ai](https://www.deepset.a
 
 Language model + Fine-tuning  
 
-![opacity:.9 width:800 center](bert001.png)
+![opacity:.9 width:800 center](images/bert001.png)
 
 
+<!--
 ---
 ## What are language models?
 
@@ -377,7 +378,7 @@ $$
 \end{aligned}
 
 $$
-
+-->
 
 ---
 <!--
@@ -449,46 +450,51 @@ _footer: 'Source: [How GPT3 Works - Visualizations and Animations - Jay Alammar]
 GTP-3 (= Generative Pre-trained Transfomer 3)
 ![opacity:.9 w:500](https://jalammar.github.io/images/gpt3/gpt3-parameters-weights.png)![opacity:.9 w:500](https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif)
 
----
-## Geometric-beta model (cont'd)
-We can combine the geometric distribution (given at $eq. (1)$) and the beta distribution ($eq. (5)$) to get the joint distribution as follows: 
-$$
-
-P(T=t|\alpha_{u_i},\hspace{2pt} \beta_{u_i}) = 
-    \int_{0}^{1} p(T=t|\theta_{u_i}) f(\theta_{u_i}|\alpha_{u_i}, \hspace{2pt} \beta_{u_i}) d\theta_{u_i} \hspace{10pt}...\hspace{10pt}(7) \\[8pt]
-p(T=1|\alpha_{u_i}, \hspace{2pt} \beta_{u_i}) = 
-    {\small\frac{B(\alpha_{u_i}+1, \beta_{u_i})}{B(\alpha_{u_i}, \beta_{u_i})} =
-    \frac{\alpha_{u_i}}{\alpha_{u_i} + \beta_{u_i}}} \hspace{10pt}...\hspace{10pt}(8) \\[8pt]
-p(T=t|\alpha_{u_i},\hspace{2pt} \beta_{u_i}) = {\small\frac{\beta_{u_i}+t-2}{\alpha_{u_i}+\beta_{u_i}+t-1}p(T=t-1|\alpha_{u_i},\hspace{2pt} \beta_{u_i})\hspace{5pt} (for\hspace{2pt} t>1)}\hspace{10pt}...\hspace{10pt}(9) \\[8pt]
-r(t) = {\small\frac{\beta_{u_i}+t-1}{\alpha_{u_i}+\beta_{u_i}+t-1}} \hspace{10pt}...\hspace{10pt}(10)
-$$ 
 
 ---
-## Geometric-beta model (cont'd)
-Log-Likelihood for $P(T=t|\alpha_{u_i}, \hspace{2pt}\beta_{u_i})$ can be defined as follows:
+<!--
+style: |
+    img[alt~="center"] {
+        display: block;
+        margin: 0 auto;
+    }
 
-$$
-L(\alpha_{u_i}, \hspace{2pt}\beta_{u_i}) = {\displaystyle \prod_t P(T=t|\alpha_{u_i}, \hspace{2pt}\beta_{u_i})} \hspace{10pt}...\hspace{10pt}(11)\\[5pt]
-\log L = {\displaystyle \sum_{i}}L(\alpha_{u_i},\hspace{2pt} \beta_{u_i}) = {\displaystyle \sum_{i}\sum_{t}}P(T=t|\alpha_{u_i},\hspace{2pt} \beta_{u_i}) \hspace{10pt}...\hspace{10pt}(12)
-$$ 
-We need to maximize the log-likelihood (12) (or minimize negative log-likelihood) to find optimal parameters $\alpha_{u_i}$ and $\beta_{u_i}$ (i.e. set of parameters $\{w_{u_i}\}$) (MLE = Maximum Likelihood Estimation).
+
+-->
+## LLM for businesses
+### What Google failed?
+- Had LLM at least in 2020.
+- Too aspirational to make the LLM perfect, Too conservative to early launch.
+    [AI Test Kitchen](https://aitestkitchen.withgoogle.com/)  
+### What OpenAI and Microsoft are doing well?
+- Tried and error. 
+    [Twitter taught Microsoft’s AI chatbot to be a racist asshole in less than a day](https://www.theverge.com/2016/3/24/11297050/tay-microsoft-chatbot-racist)
+- Succeeded in UI/UX.
+- UI/UX v.s. Revenue opportunity  
+    --> Vertical specific LLM service and Cloud
+<!--
+![h:200](images/edge.png)
+-->
 
 ---
-## Calculate CLTV 
-Now we can calculate CLTV with parameters $\alpha_{u_i}$ and $\beta_{u_i}$.
-Survival rate at each time point is as follows:  
+<!--
+style: |
+    img[alt~="center"] {
+        display: block;
+        margin: 0 auto;
+    }
 
-- $r_{u_i}(t) = (\beta_{u_i} + t - 1) / (\alpha_{u_i} + \beta_{u_i} + t -1)$
-- $s_{u_i}(t) = 1 \hspace{5pt} when \hspace{5pt} t = 0$
-- $s_{u_i}(t) = r_{u_i}(t)s_{u_i}(t-1) \hspace{5pt} when \hspace{5pt} t > 0$
 
-Then, CLTV for the specific customer $u_i$ is given as follows ($k$ : large enough, integer):
-$$
-\begin{aligned}
-E_{u_i}[CLTV] &= \displaystyle{\sum_{t=0}^{k}} \hspace{2pt}\frac{m}{(1+d)^t}s_{u_i}(t)
-\hspace{10pt}...\hspace{10pt}(13)
-\end{aligned}
-$$
+-->
+## LLM for businesses
+### LLM application other than NLP
+
+Highly accurate protein structure prediction with AlphaFold (Deepmind, 2021)<br />![h:300](https://media.springernature.com/lw685/springer-static/image/art%3A10.1038%2Fs41586-021-03819-2/MediaObjects/41586_2021_3819_Fig1_HTML.png?as=webp)|GATO, A Generalist Agent (Deepmind, 2022)<br />![opacity:.9 h:300](https://assets-global.website-files.com/621e749a546b7592125f38ed/627d13d743dc353a184da8d4_data_sequences.png)
+---|---
+
+
+
+
 ---
 <!--
 _paginate: false
